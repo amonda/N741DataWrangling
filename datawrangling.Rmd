@@ -88,7 +88,9 @@ v.int <- c(2002,2004,2006,2008,2010)
 
 Look at the class of each object
 
+
 ```{r}
+#Class tells you if it is numeric or character etc. 
 class(v1)
 class(v2)
 class(v.char)
@@ -168,7 +170,7 @@ Let's combine v2, v.char, v.int2, and v.log into a `data.frame`. The easiest way
 * `attributes` for the newly created `df` `data.frame` object
 
 ```{r}
-# create a data.frame object called "df"
+# create a data.frame object called "df" if columns are all of the same length and all other objects were run above it
 # combining 4 vectors v2, v.char, v.int2, v.log
 df <- data.frame(v2,v.char,v.int2,v.log)
 
@@ -195,6 +197,8 @@ The `names` attributes is really helpful for labeling and selecting specific COL
 Right now the column names are not helpful. The names simply reflect the previous vector names.
 
 ```{r}
+#attributes are the data about the data to label and identify labels like in proc contents 
+#names tells you what the column names are
 names(df)
 ```
 
@@ -225,6 +229,7 @@ Since this is such a small dataset with 5 ROWS and 4 COLUMNS we can easily "view
 **NOTE:** The `kable()` function makes pretty good tables in HTML, DOCX and PDF formats for objects that are `data.frame` or a `matrix`. We'll learn more about the `kable()` function throughout the semester... In the example below, I also added a `caption` for the table.
 
 ```{r}
+#knitting a table shows you a preview of what it will look like in your final document
 knitr::kable(df,
              caption="View the 'df' object")
 ```
@@ -246,6 +251,11 @@ library(tidyverse)
 # names as the 1st row of the file. We will assign the 
 # column names below.
 cmc <- read_csv("cmc.data", col_names=FALSE)
+```
+
+#Identify Session Info for details of packages and version
+```{r}
+sessionInfo()
 ```
 
 ### Apply the codebook - variable names and coding used
@@ -332,6 +342,7 @@ cmc$Contraceptive <- factor(cmc$Contraceptive,
 
 ```{r}
 head(cmc)
+#tail (cmc) pulls last 6
 ```
 
 ### Print this subset using `knitr::kable()`
@@ -346,6 +357,7 @@ knitr::kable(head(cmc))
 
 ```{r}
 summary(cmc)
+#proc contents essentially 
 ```
 
 ### Computing stats on factors
@@ -354,6 +366,7 @@ Suppose you wanted to know the mean education level of the Huband's in this data
 
 ```{r}
 mean(as.numeric(cmc$HusbEd))
+#to use numbers that are under data we just made categorical
 ```
 
 
